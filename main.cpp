@@ -23,15 +23,12 @@ int main(int argc, char* argv[]){
     container* container = Create();
     int size;
     if (strcmp(argv[1], "-r") == 0) {
-        if (access(argv[3], F_OK) == -1) {
-            return 1;
-        }
         FILE* file = fopen(argv[3], "w");
         if (!GetRandom(container, atoi(argv[2]), file)) {
             return 1;
         }
     } else if (strcmp(argv[1], "-in") == 0) {
-        if (access(argv[2], F_OK) == -1 || access(argv[3], F_OK) == -1) {
+        if (access(argv[2], F_OK) == -1) {
             return 1;
         }
         FILE *file = fopen(argv[2], "r");
